@@ -8,3 +8,5 @@ Each module which requires a non-stdlib dependency will have a requirements.txt 
 ## Contents:
 
 - **[/filetree](./filetree/)**: Highly-extensible module for defining strategies for iterating over file trees of any type and pretty-printing their contents uniformly, with two example strategies.
+
+- **[/repo_util](./repo_util/)**: Various utility scripts I am using inside this repository (but whose use could be helpful elsewhere) for managing dependencies etc.
