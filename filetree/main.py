@@ -21,10 +21,19 @@ obj = {
         "emptydir": {}
     }
 }
-    
-nav = JSONNavigator("root", obj["root"])
-pprint_filetree(nav)
 
-parent_dir = Path("..").resolve()
-filenav = FilesystemNavigator(parent_dir)
-# pprint_filetree(filenav)
+def demo_json_pprint():
+    nav = JSONNavigator("root", obj["root"])
+    pprint_filetree(nav)
+
+def demo_filesystem_pprint():
+    parent_dir = Path("..").resolve()
+    filenav = FilesystemNavigator(parent_dir)
+    pprint_filetree(filenav)
+
+def main():   
+    # demo_json_pprint()
+    demo_filesystem_pprint()
+    
+if __name__ == "__main__":
+    main()
