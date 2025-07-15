@@ -22,9 +22,7 @@ DEPENDENCY_REGEX = r"\b(.+?(?:==|>|>=|<|<=).+)\b"
 PROJECT_ROOT_RELPATH = "../.."
 
 def merge_dependencies():
-    """
-    Merge the dependencies of all project requirements.txt files into the main requirements.txt.
-    """
+    """Merge the dependencies of all project requirements.txt files into the main requirements.txt."""
 
     repo_root_dir = Path(__file__, PROJECT_ROOT_RELPATH).resolve()
     main_requirements = Path(repo_root_dir, "requirements.txt")

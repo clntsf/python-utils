@@ -22,10 +22,10 @@ class FileTreeNavigator(ABC):
     @property
     @abstractmethod
     def value(self) -> str:
-        "Filetree root value."
+        """Filetree root value."""
         ...
 
     @abstractmethod
     def get_children(self) -> "list[FileTreeNavigator]":
-        "Get list of root children as filetree navigators."
+        """Get list of root children as filetree navigators."""
         ...

@@ -7,12 +7,16 @@ _LAST_CHILD_CONNECTOR   = "└── "
 
 def pprint_filetree(root: FileTreeNavigator, _prefix: str = "", _is_last: bool = True, _is_root: bool = True) -> None:
     """
-    Pretty-print a filetree specified by a FileTreeNavigator pointing to its root. This function runs recursively
-    and supports any arbitrary strategy implementing the FileTreeNavigator interface, so it can be used cleanly with
-    JSON filetree representations (see json_navigator.py) or children of a specified path in the user's filesystem (see
-    filesystem_navigator.py)
+    Pretty-print a filetree specified by a FileTreeNavigator pointing to its root.
+    
+    This function runs recursively and supports any arbitrary strategy implementing the FileTreeNavigator interface,
+    so it can be used cleanly with JSON filetree representations (see json_navigator.py) or children of a 
+    specified path in the user's filesystem (see filesystem_navigator.py)
 
-    @param root: a FileTreeNavigator pointing to the root of the filetree to parse
+    Parameters
+    ----------
+    root : FileTreeNavigator
+           a FileTreeNavigator pointing to the root of the filetree to parse
     """
     if _is_root:
         print(f"/{root.value}")
