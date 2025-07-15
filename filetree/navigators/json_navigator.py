@@ -1,5 +1,21 @@
 from .filetree_navigator import FileTreeNavigator
 
+SAMPLE_JSON_TREE = {
+    "alice": {
+        "charlie": {
+            "dog": None,    # NoneType value for files
+            "cat": None,
+            "monkey": None
+        },
+        "bob.txt": None,
+    },
+    "foo.txt": None,
+    "bar": {
+        "baz.txt": None
+    },
+    "emptydir": {}          # empty dict value for empty directories
+}
+
 class JSONNavigator(FileTreeNavigator):
 
     _value: str

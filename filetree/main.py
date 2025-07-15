@@ -1,29 +1,11 @@
-from navigators.json_navigator import JSONNavigator
+from navigators.json_navigator import JSONNavigator, SAMPLE_JSON_TREE
 from navigators.filesystem_navigator import FilesystemNavigator
 from pprint_filetree import pprint_filetree
 
 from pathlib import Path
 
-obj = {
-    "root": {
-        "alice": {
-            "charlie": {
-                "dog": None,
-                "cat": None,
-                "monkey": None
-            },
-            "bob.txt": None,
-        },
-        "foo.txt": None,
-        "bar": {
-            "baz.txt": None
-        },
-        "emptydir": {}
-    }
-}
-
 def demo_json_pprint():
-    nav = JSONNavigator("root", obj["root"])
+    nav = JSONNavigator("root", SAMPLE_JSON_TREE)
     pprint_filetree(nav)
 
 def demo_filesystem_pprint():
