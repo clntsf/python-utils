@@ -1,0 +1,6 @@
+# Python compiled outputs
+*.pyc
+__pycache__
+
+# testing files
+*.test.py
