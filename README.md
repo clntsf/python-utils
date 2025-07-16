@@ -10,3 +10,5 @@ Each module which requires a non-stdlib dependency will have a requirements.txt 
 - **[/filetree](./filetree/)**: Highly-extensible module for defining strategies for iterating over file trees of any type and pretty-printing their contents uniformly, with two example strategies.
 
 - **[/repo_util](./repo_util/)**: Various utility scripts I am using inside this repository (but whose use could be helpful elsewhere) for managing dependencies etc.
+
+    - **[/merge_dependencies](./repo_util/merge_dependencies/)**: Merge the dependencies in all requirements.txt files across a project into a central requirements.txt at root (configurable), with extensible policy-based collision handling
