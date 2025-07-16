@@ -44,4 +44,3 @@ def merge_dependencies(collision_policy: type[CollisionPolicy] = CollisionPolici
     with open(main_requirements, "w") as writer:
         writer.write(out)
 
-merge_dependencies(CollisionPolicies.EXCLUDE_AND_WARN)
