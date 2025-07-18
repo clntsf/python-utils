@@ -6,13 +6,14 @@ if __name__ == "__main__":
 
     policy = CollisionPolicies.EXCLUDE_AND_WARN
 
-    # this might be evil but it works really well
-    available_policies = CollisionPolicies.__annotations__
+    # choose user-defined policy if supplied on command-line if present and valid
     if len(argv) > 1:
-        if (user_policy:=argv[1]) in available_policies:
-            policy = available_policies[user_policy]
+        user_policy = CollisionPolicies[argv[1]]
+        if user_policy is None:
+            print(f"[ERROR]: Unknown policy {user_policy}!")
+            print(f"Options are:\n - {'\n - '.join(CollisionPolicies.__annotations__)}")
+            print("Defaulting to policy EXCLUDE_AND_WARN")
         else:
-            print(f"[ERROR]: Unknown policy {user_policy}! Options are \n - {'\n - '.join(available_policies)}")
-            print("Defaulting to policy EXCLUDE_AND_WARN\n")
+            policy = user_policy
 
     merge_dependencies(policy) 

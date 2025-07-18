@@ -47,8 +47,12 @@ class ExcludeAndWarnDependency(CollisionPolicy):
         print(f"@{key} [WARN]: Colliding values for dependency {key} found, new value is '{newval}' from path: {reqs_path}")
         dependencies[key] = ""
 
+class IndexableClass(type):
+    def __getitem__(cls, val):
+        if val not in cls.__dict__: return None
+        return cls.__dict__[val]
 
-class CollisionPolicies:
+class CollisionPolicies(metaclass=IndexableClass):
     """
     this is purely for convenience. Developers can choose to import their specified strategy
     instead of having to update this with every created strategy, but this provides a clean and
@@ -58,5 +62,7 @@ class CollisionPolicies:
      * KEEP_FIRST
      * EXCLUDE_AND_WARN
     """
+    
+
     KEEP_FIRST: type[CollisionPolicy] = KeepFirstPolicy
     EXCLUDE_AND_WARN: type[CollisionPolicy] = ExcludeAndWarnDependency
