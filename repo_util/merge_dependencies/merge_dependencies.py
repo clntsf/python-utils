@@ -1,12 +1,12 @@
 from pathlib import Path
-from re import findall
+from re import findall, MULTILINE
 from collision_policy import (
     CollisionPolicy,
     CollisionPolicies
 )
 
 # matches an actual dependency listing and not random text or comments
-DEPENDENCY_REGEX = r"\b(.+?)((?:==|>|>=|<|<=).+)\b"
+DEPENDENCY_REGEX = r"^(.+?)((?:==|>|>=|<|<=).+)$"
 
 # USER: configure this based on the path to the project root directory relative to this file
 PROJECT_ROOT_RELPATH = "../../.."
@@ -23,7 +23,7 @@ def merge_dependencies(collision_policy: type[CollisionPolicy] = CollisionPolici
     for requirement_path in project_requirements:
         strpath = str(requirement_path.relative_to(repo_root_dir))
         with open(requirement_path, "r") as reader:
-            project_dependencies = findall(DEPENDENCY_REGEX, reader.read())
+            project_dependencies = findall(DEPENDENCY_REGEX, reader.read(), MULTILINE)
 
             for (dep, version) in project_dependencies:
                 if dep not in dependency_dict:

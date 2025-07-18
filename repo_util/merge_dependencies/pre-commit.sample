@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# This sample script will run merge_dependencies with the user-selected policy
+# and add the merged requirements.txt to the commit if changes were made,
+# whenever the user commits a change in the repository.
+
+POLICY="EXCLUDE_AND_WARN"
+echo "\nMerging project dependencies into requirements.txt at root"
+old=$(pwd)
+cd $(find ./**/merge_dependencies -print -quit)
+python3 main.py $POLICY
+cd $old
+if [ -f ./requirements.txt ]; then
+    git add requirements.txt
+fi
+echo ""
