@@ -1,5 +1,4 @@
-config:
-  language: python
+settings:
   generate-links: true
 comments:
   - comment-tag: NB
@@ -16,6 +15,3 @@ comments:
     ignore: false
     severity: medium
     shortdesc: Incomplete or unstarted project elements
-    
-
-  
