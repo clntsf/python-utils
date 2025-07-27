@@ -1,17 +1,17 @@
 settings:
     generate-links: true
-comments:
-  - comment-tag: NB
+tags:
+  - tag-name: NB
     color: darkblue
     ignore: true
     severity: 1
     shortdesc: Important notes or considerations for a piece of code
-  - comment-tag: FIXME
+  - tag-name: FIXME
     color: darkred
     ignore: false
     severity: 3
     shortdesc: Error or vulnerability to be fixed
-  - comment-tag: TODO
+  - tag-name: TODO
     color: dodgerblue
     ignore: false
     severity: 2

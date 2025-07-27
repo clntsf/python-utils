@@ -84,7 +84,7 @@ def main():
     tagnames = [comment["comment-tag"] for comment in comments]
     
     tag_re_formatted = format_re(TAG_RE, tagnames)
-    data = process_files(subfiles, tag_re_formatted)
+    data: dict[str, list] = process_files(subfiles, tag_re_formatted)
     md_fp = format_output(data)
 
     if out_path is not None:
