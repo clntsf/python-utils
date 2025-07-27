@@ -12,3 +12,5 @@ Each module which requires a non-stdlib dependency will have a requirements.txt 
 - **[/repo_util](./repo_util/)**: Various utility scripts I am using inside this repository (but whose use could be helpful elsewhere) for managing dependencies etc.
 
     - **[/merge_dependencies](./repo_util/merge_dependencies/)**: Merge the dependencies in all requirements.txt files across a project into a central requirements.txt at root (configurable), with extensible policy-based collision handling
+
+    - **[/comment_aggregator](./repo_util/comment_aggregator/)**: Aggregate all comment tags (TODO/FIXME/NB) in a repository from a provided directory and output them as markdown (behavior configurable with a YAML config file)
