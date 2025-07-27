@@ -7,6 +7,7 @@ from typing import Iterable
 from yaml import safe_load
 
 from parse_config import parse_config, CONFIG_FP
+from format_output import format_output
 
 TAG_RE = r"^(.*#\s*({}).*)$"
 
@@ -79,14 +80,13 @@ def main():
     # parse config file
     config = parse_config()
 
-    settings = config["settings"]
     comments = config["comments"]
     tagnames = [comment["comment-tag"] for comment in comments]
     
     tag_re_formatted = format_re(TAG_RE, tagnames)
     data = process_files(subfiles, tag_re_formatted)
+    md_fp = format_output(data)
 
-    data_out = dumps(data, indent=2)
     if out_path is not None:
         out_path_abs = Path(out_path).resolve()
 
@@ -95,7 +95,7 @@ def main():
             out_path_abs = out_path_abs.joinpath("output.json")
 
         with open(out_path_abs, "w") as writer:
-            writer.write(data_out)
+            writer.write(dumps(data, indent=2))
 
         
 if __name__ == "__main__":

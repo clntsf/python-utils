@@ -1,17 +1,20 @@
 settings:
-  generate-links: true
+    generate-links: true
 comments:
   - comment-tag: NB
+    color: darkblue
     ignore: true
-    severity: low
+    severity: 1
     shortdesc: Important notes or considerations for a piece of code
 
   - comment-tag: FIXME
+    color: darkred
     ignore: false
-    severity: high
+    severity: 3
     shortdesc: Error or vulnerability to be fixed
 
   - comment-tag: TODO
+    color: dodgerblue
     ignore: false
-    severity: medium
+    severity: 2
     shortdesc: Incomplete or unstarted project elements
