@@ -6,13 +6,11 @@ comments:
     ignore: true
     severity: 1
     shortdesc: Important notes or considerations for a piece of code
-
   - comment-tag: FIXME
     color: darkred
     ignore: false
     severity: 3
     shortdesc: Error or vulnerability to be fixed
-
   - comment-tag: TODO
     color: dodgerblue
     ignore: false
