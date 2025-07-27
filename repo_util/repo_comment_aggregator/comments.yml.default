@@ -1,0 +1,21 @@
+config:
+  language: python
+  generate-links: true
+comments:
+  - comment-tag: NB
+    ignore: true
+    severity: low
+    shortdesc: Important notes or considerations for a piece of code
+
+  - comment-tag: FIXME
+    ignore: false
+    severity: high
+    shortdesc: Error or vulnerability to be fixed
+
+  - comment-tag: TODO
+    ignore: false
+    severity: medium
+    shortdesc: Incomplete or unstarted project elements
+    
+
+  

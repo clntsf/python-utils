@@ -49,8 +49,7 @@ class ExcludeAndWarnDependency(CollisionPolicy):
 
 class IndexableClass(type):
     def __getitem__(cls, val):
-        if val not in cls.__dict__: return None
-        return cls.__dict__[val]
+        return cls.__dict__.get(val, None)
 
 class CollisionPolicies(metaclass=IndexableClass):
     """
