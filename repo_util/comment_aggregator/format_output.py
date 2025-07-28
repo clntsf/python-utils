@@ -1,4 +1,3 @@
-from matplotlib.colors import CSS4_COLORS
 from pathlib import Path
 from textwrap import dedent
 
