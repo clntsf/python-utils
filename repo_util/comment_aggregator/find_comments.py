@@ -1,5 +1,4 @@
 import argparse
-from json import dumps      # TODO: remove
 from os import system
 from pathlib import Path
 import re
@@ -22,7 +21,6 @@ class UpdateConfigAction(argparse.Action):
         system(f"open {CONFIG_FP}")
         parser.exit()
 
-# TODO: add any extra arguments needed
 def make_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Find comments in a repository and render with markdown, configurable with YAML",
@@ -64,7 +62,7 @@ def process_files(files: Iterable[Path], tag_re: str):
             if match != None:
                 tags.append((i, match.groups()))
 
-        data[fp.name] = tags
+        data[fp] = tags
 
     return data
 
@@ -80,22 +78,22 @@ def main():
     # parse config file
     config = parse_config()
 
-    comments = config["comments"]
-    tagnames = [comment["comment-tag"] for comment in comments]
+    comments = config["tags"]
+    tagnames = [comment["tag-name"] for comment in comments]
     
     tag_re_formatted = format_re(TAG_RE, tagnames)
-    data: dict[str, list] = process_files(subfiles, tag_re_formatted)
-    md_fp = format_output(data)
+    data: dict[Path, list] = process_files(subfiles, tag_re_formatted)
+    format_output(base_fp, data)
 
-    if out_path is not None:
-        out_path_abs = Path(out_path).resolve()
+    # if out_path is not None:
+    #     out_path_abs = Path(out_path).resolve()
 
-        # add default filename if path supplied is a directory
-        if out_path_abs.is_dir():
-            out_path_abs = out_path_abs.joinpath("output.json")
+    #     # add default filename if path supplied is a directory
+    #     if out_path_abs.is_dir():
+    #         out_path_abs = out_path_abs.joinpath("output.json")
 
-        with open(out_path_abs, "w") as writer:
-            writer.write(dumps(data, indent=2))
+    #     with open(out_path_abs, "w") as writer:
+    #         writer.write(dumps(data, indent=2))
 
         
 if __name__ == "__main__":
